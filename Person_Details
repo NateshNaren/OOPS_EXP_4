@@ -1,0 +1,97 @@
+import java.util.Scanner;
+class Contact{
+
+	private int contactID;
+	private String name;
+	private long phoneNumber;
+	private String email;
+	private String address;
+
+	
+
+	public Contact(int contactID,String name,long phoneNumber,String email,String address) {
+		this.contactID = contactID;
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.address = address;
+	}
+
+	public void displayContact(){
+		System.out.println("Contact ID : "+contactID);
+		System.out.println("Name : "+name);
+		System.out.println("Phone Number : "+phoneNumber);
+		System.out.println("Email ID : "+email);
+		System.out.println("Address : "+address);
+
+	}
+    public void updatePhoneNumber(long newPhoneNumber){
+		this.phoneNumber = newPhoneNumber;
+		System.out.println("Phone Number updated to "+phoneNumber);
+
+	}
+    public void updateEmailID(String newEmailID){
+    	this.email = newEmailID;
+		System.out.println("Email ID updated to "+ email);
+	}
+}
+public class Person_detail {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your Name : ");
+		String name = sc.nextLine();
+		System.out.print("Enter Contact ID : ");
+		int id = sc.nextInt();
+		System.out.print("Enter Phone Number : ");
+	    long phoneNumber = sc.nextLong();
+	    sc.nextLine();
+		System.out.print("Enter Email ID : ");
+		String email = sc.nextLine();
+		System.out.print("Enter Address : ");
+		String address = sc.nextLine();
+		Contact contact = new Contact(id,name,phoneNumber,email,address);
+		int choice;
+		do {
+
+			System.out.println("\n----Contact Management Menu----");
+			System.out.println("1. Display Details");
+			System.out.println("2. Update Email ID");
+			System.out.println("3. Update Phone Number");
+			System.out.println("4. EXIT");
+			System.out.print("Enter your Choice : ");
+			choice = sc.nextInt();
+			sc.nextLine();
+			switch(choice) {
+
+			case 1:
+				contact.displayContact();
+				break;
+
+			case 2:
+				System.out.print("Enter a New Email ID : ");
+				String newEmailID = sc.nextLine();
+				contact.updateEmailID(newEmailID);
+				break;
+
+			case 3:
+				System.out.print("Enter a New Phone Number : ");
+				long newPhoneNumber = sc.nextLong();
+				sc.nextLine();
+				contact.updatePhoneNumber(newPhoneNumber);
+				break;
+
+			case 4:
+				System.out.println("EXIT");
+				break;
+			default:
+				System.out.println("Invalid Choice!");
+			}
+
+		}while(choice != 4);
+
+	}
+
+
+
+}
+
